@@ -1,0 +1,57 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define endl '\n'
+#define ll long long
+#define rep(i, n) for (ll i = 0; i < (ll)(n); i++)
+
+int init()
+{
+    cin.tie(nullptr);
+    ios_base::sync_with_stdio(false);
+
+    return 0;
+}
+
+ll p = 4;
+
+ll mod(ll a, ll n)
+{
+    if (n == 1)
+    {
+        return a % p;
+    }
+
+    if (n % 2 == 1)
+    {
+        return (a * mod(a, n - 1)) % p;
+    }
+
+    ll tmp = mod(a, n / 2);
+    return (tmp * tmp) % p;
+}
+
+int main()
+{
+    init();
+
+    ll A, B, C;
+    cin >> A >> B >> C;
+
+    vector<vector<ll>> answer(10, vector<ll>(4, 0));
+
+    rep(i, 10)
+    {
+        for (ll j = 1; j <= 4; j++)
+        {
+            answer.at(i).at(j - 1) = (ll)pow(i, j) % 10;
+        }
+    }
+
+    ll target = mod(B, C) % 4;
+
+    cout << answer.at(A % 10).at(target == 0 ? 3 : target - 1) << endl;
+
+    return 0;
+}
