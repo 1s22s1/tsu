@@ -23,6 +23,7 @@
         "numeric": "cpp",
         "iostream": "cpp",
         "ostream": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "all": "cpp"
     }
 }
